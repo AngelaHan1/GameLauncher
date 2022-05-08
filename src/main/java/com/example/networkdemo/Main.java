@@ -74,6 +74,12 @@ public class Main extends Application {
 
                     switch (messageType) {
 
+                        case NEW_CLIENT:
+                            Message newMsg = new Message(roomList, HumanTypes.SEND_GAMECHANNEL);
+                            toServer.writeObject(newMsg);
+                            toServer.reset();
+                            break;
+
                         case SEND_NAME :
                             // get username and saved in this.clientName
                             clientName = (String) messageReceived.getData();
