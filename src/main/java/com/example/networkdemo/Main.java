@@ -75,7 +75,8 @@ public class Main extends Application {
                     switch (messageType) {
 
                         case LOBBY:
-                            Message lobbyMsg = new Message("Access Granted", HumanTypes.JOIN_LOBBY);
+                            clientName = (String) messageReceived.getData();
+                            Message lobbyMsg = new Message(clientName, HumanTypes.JOIN_LOBBY);
                             toServer.writeObject(lobbyMsg);
                             break;
 
