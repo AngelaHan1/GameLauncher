@@ -74,6 +74,11 @@ public class Main extends Application {
 
                     switch (messageType) {
 
+                        case LOBBY:
+                            Message lobbyMsg = new Message("Access Granted", HumanTypes.JOIN_LOBBY);
+                            toServer.writeObject(lobbyMsg);
+                            break;
+
                         case NEW_CLIENT:
                             Message newMsg = new Message(roomList, HumanTypes.SEND_GAMECHANNEL);
                             toServer.writeObject(newMsg);
