@@ -103,10 +103,24 @@ public class Main extends Application {
                             System.out.println(roomList.size());
                             //client.out.writeObject(new Message(room.getRoomID(), HumanTypes.ROOM_ADDED));
                             Message newMessage = new Message(roomList, HumanTypes.ROOM_ADDED);
-                             toServer.writeObject(newMessage);
-                             toServer.reset();
+                            toServer.writeObject(newMessage);
+                            toServer.reset();
                             break;
+                        case CREATE_SOLOGAME:
+                            // create a new game room and assign creator to room 1 with token 'X'
+                            GameRoom aiRoom = new GameRoom(clientName, "solo");
+                            System.out.println("Adding a new room to the room list: " + aiRoom.getRoomID());
+                            roomList.addToList(aiRoom);
+                            // send sologame created
+                            toServer.writeObject(new Message(aiRoom, HumanTypes.SOLOGAME_CREATED));
+                            toServer.reset();
 
+                            System.out.println(roomList.size());
+                            //client.out.writeObject(new Message(room.getRoomID(), HumanTypes.ROOM_ADDED));
+                            Message aiMessage = new Message(roomList, HumanTypes.ROOM_ADDED);
+                            toServer.writeObject(aiMessage);
+                            toServer.reset();
+                            break;
                         case JOIN_GAME:  // this message was sent with the room_id player wanna join
                             String room_id = (String) messageReceived.getData();
 
