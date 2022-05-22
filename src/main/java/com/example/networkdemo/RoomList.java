@@ -24,7 +24,7 @@ public class RoomList implements Serializable  {
         }
 
     }
-    
+
     public void updatePlayer2InList(GameRoom updatedRoom) {
         for (int i = 0; i < gameRoomList.size(); i++)
         {
