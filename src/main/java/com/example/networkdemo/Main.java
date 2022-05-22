@@ -121,6 +121,19 @@ public class Main extends Application {
                             toServer.writeObject(aiMessage);
                             toServer.reset();
                             break;
+                        case REMATCH_REJECT:
+                            //delete from roomlist, and update
+                            String rejectedGame = (String) messageReceived.getData();
+                            System.out.println(rejectedGame + "\n");
+
+                            roomList.removeFromList(rejectedGame); //testing this line
+                            roomList.printList();
+
+                            Message updateRoomList = new Message(roomList, HumanTypes.SEND_GAMECHANNEL);
+                            toServer.writeObject(updateRoomList);
+                            toServer.reset();
+
+                            break;
                         case JOIN_GAME:  // this message was sent with the room_id player wanna join
                             String room_id = (String) messageReceived.getData();
 
