@@ -111,7 +111,7 @@ public class Main extends Application {
                             String rejectedGame = (String) messageReceived.getData();
                             System.out.println(rejectedGame + "\n");
 
-                           // roomList.removeFromList(rejectedGame);
+                           roomList.removeFromList(rejectedGame); //testing this line
                             roomList.printList();
 
                             Message updateRoomList = new Message(roomList, HumanTypes.SEND_GAMECHANNEL);
